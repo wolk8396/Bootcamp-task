@@ -14,7 +14,6 @@ export class ModalCharacterComponent implements OnInit, OnDestroy {
   isActive: boolean = false;
 
   private modalWindowCharacterDes$ = new Subject<void>();
-background: any;
 
   constructor(
     private resultService: ResultService,

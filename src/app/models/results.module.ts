@@ -1,4 +1,5 @@
 import { LocationDate } from "./location.moule";
+import { Origin } from "./origin.module";
 
 export interface Results{
   id: number,
@@ -11,5 +12,6 @@ export interface Results{
   status: string,
   type: string,
   url: string,
+  origin: Origin,
   location: LocationDate
 }

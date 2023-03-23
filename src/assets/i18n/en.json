@@ -1,0 +1,12 @@
+{
+  "modal":{
+    "name": "Name:",
+    "status":"Status:",
+    "species": "Species:",
+    "origin":"Origin:",
+    "location": "Location:",
+    "gender":"Gender:"
+
+  }
+}
+

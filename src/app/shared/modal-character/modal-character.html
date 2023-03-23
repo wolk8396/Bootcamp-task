@@ -1,15 +1,33 @@
 <div class="modal-window" (click)="onCloseModalWindow()" [ngStyle]="{display: !isShowModal ? 'none' : 'block' }">
-  <div class="modal-window__wrapper-modal">
-    <div class="information-review" *ngIf="isShowModal;">
-      <div class="main">
-        <div class="main__photo-review" [ngStyle]="{'background-image':  getUrl()}">
-          <!-- <img [src]="isResults.image" alt=""> -->
-        </div>
-        <div class="main__info">
-          <!-- <div class="date">{{isReview.date}}</div>
-          <div class="review-des">{{isReview.description}}</div> -->
+  <ng-container *transloco="let t">
+    <div class="modal-window__wrapper-modal">
+      <div class="information-review" *ngIf="isShowModal;">
+        <div class="main">
+          <div class="main__photo-review" [ngStyle]="{'background-image': getUrl()}"></div>
+          <div class="main__info">
+            <ul>
+              <li>{{t('modal.name')}}
+                <span>{{isResults.name}}</span>
+              </li>
+              <li>{{t('modal.status')}}
+                <span>{{isResults.status}}</span>
+              </li>
+              <li>{{t('modal.species')}}
+                <span>{{isResults.species}}</span>
+              </li>
+              <li>{{t('modal.origin')}}
+                <span>{{isResults.origin.name}}</span>
+              </li>
+              <li>{{t('modal.location')}}
+                <span>{{isResults.location.name}}</span>
+              </li>
+              <li>{{t('modal.gender')}}
+                <span>{{isResults.gender}}</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
