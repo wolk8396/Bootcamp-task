@@ -1,0 +1,12 @@
+<div class="wrapper-main-page">
+  <div class="wrapper-main-page__cart"  #nav>
+    <div class="item"  *ngFor="let item of isResults">
+      <app-avatar [results]="item" *ngIf="isShowCart"></app-avatar>
+    </div>
+  </div>
+  <nav class="wrapper-main-page__naveget">
+    <button>top</button>
+    <button (click)="onNextCartList()">next page</button>
+  </nav>
+</div>
+

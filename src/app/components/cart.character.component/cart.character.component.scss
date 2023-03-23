@@ -1,0 +1,67 @@
+@import '../../../styles/color.scss';
+@import '../../../styles/mixins-fonts-style.scss';
+
+.cart {
+  @include flex(column, flex-end);
+  width: 515px;
+  height: 590px;
+  position: relative;
+  border-radius: 9px;
+  filter: drop-shadow(6px 4px 10px $shadowCart);
+
+  .container {
+    @include flex(column, space-between);
+    align-items: center;
+    position: absolute;
+    height: 95%;
+    top: 0;
+    z-index: 2;
+
+    &__avatar {
+      width: 95%;
+      height: 73%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        filter: drop-shadow(6px 4px 10px $shadowImg);
+      }
+    }
+
+    &__title-avatar {
+      @include flex(column, flex-start);
+      height: 20%;
+
+      span {
+        @include title(bold, 42px, center);
+        color: $title_cart;
+      }
+    }
+  }
+
+  .background-cart {
+    height: 90%;
+    background-color: $background_cart;
+    border-radius: 10px;
+    z-index: 1;
+  }
+}
+
+@media(max-width: 2400px) {
+  .cart {
+    width: 226px;
+    height: 269px;
+
+    .container {
+      &__title-avatar {
+
+        span {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
+
+

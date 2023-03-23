@@ -1,0 +1,36 @@
+@import '../../../styles/mixins-fonts-style.scss';
+@import '../../../styles/color.scss';
+
+.wrapper-main-page {
+  @include flex(column, center);
+  align-items: center;
+  background-color: $background;
+
+  &__cart {
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    row-gap: 39px;
+    column-gap: 38px;
+
+    .item {}
+  }
+}
+
+@media(max-width: 1100px) {
+  .wrapper-main-page {
+    &__cart {
+      grid-template-columns:repeat(3, 1fr)
+    }
+  }
+}
+
+@media(max-width: 800px) {
+  .wrapper-main-page {
+    &__cart {
+      grid-template-columns:repeat(2, 1fr)
+    }
+  }
+}
+
+
