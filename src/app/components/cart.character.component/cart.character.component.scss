@@ -64,4 +64,60 @@
   }
 }
 
+@media(max-width: 540px) {
+  .cart {
+    width: 100%;
+
+    .container {
+      &__title-avatar {
+
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 470px) {
+  .cart {
+    height: 228px;
+
+    .container {
+      &__title-avatar {
+
+        span {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 430px) {
+  .cart {
+    height: 190px;
+
+    .container {
+      &__title-avatar {
+
+        span {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 380px) {
+  .cart {
+    height: 170px;
+  }
+}
+
+@media(max-width: 320px) {
+  .cart {
+    height: 142px;
+  }
+}
 

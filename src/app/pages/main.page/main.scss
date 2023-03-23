@@ -12,6 +12,7 @@
     grid-template-rows: 1fr;
     row-gap: 39px;
     column-gap: 38px;
+    margin-top: 131px;
 
     .item {}
   }
@@ -29,6 +30,19 @@
   .wrapper-main-page {
     &__cart {
       grid-template-columns:repeat(2, 1fr)
+    }
+  }
+}
+
+@media(max-width: 540px) {
+  .wrapper-main-page {
+    &__cart {
+      width: 97%;
+      column-gap: 13px;
+
+      .item {
+        width: 100%;
+      }
     }
   }
 }

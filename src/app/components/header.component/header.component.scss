@@ -1,0 +1,228 @@
+@import '../../../styles/color.scss';
+@import '../../../styles/mixins-fonts-style.scss';
+
+.navigation-yocalab.fixed {
+  position: static;
+}
+
+.navigation {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 18;
+  background-color: #FFFFFF;
+  filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.04));
+
+  .container-header {
+
+    @include flex(row, space-between);
+    align-items: center;
+    width: 90%;
+    max-width: 2200px;
+    height: 66px;
+    margin: 0 auto;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    // border: 1px solid;
+
+    &__rickandMorty {
+      @include flex(row, space-between);
+      align-items: center;
+      margin: 0;
+      width: 100%;
+      // border: 1px solid;
+
+      .title {
+        @include title(bold, 28px, center);
+        color: $title_header;
+      }
+
+      .nav {
+        @include flex(column, center);
+        // border: 1px solid;
+
+        .links {
+          width: 100%;
+
+          .navbar-nav-rickandMorty.isActive {
+            width: 380px;
+            height: 21px;
+            margin-right: 0;
+            padding-left: 0;
+            margin-top: 14px;
+          }
+
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 15px;
+            list-style: none;
+            margin-right: 0;
+            padding-left: 0;
+            margin: 0;
+
+            li {
+              @include title(400, 20px, center);
+
+              a {
+                text-decoration: none;
+                color: $black_lite;
+                cursor: pointer;
+              }
+
+              a:hover {
+                color: $title_header;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__burger {
+      @include flex(row, normal);
+      align-items: center;
+      // height: 66px;
+      z-index: 18;
+
+      .burger-btn {
+        display: none;
+        position: relative;
+        margin-left: 18px;
+        width: 19px;
+        height: 15px;
+        cursor: pointer;
+
+        span,
+        span::before,
+        span::after {
+          display: block;
+          position: absolute;
+          width: 100%;
+          height: 3px;
+          border-radius: 90px;
+          background-color: $green;
+        }
+
+        span::before {
+          content: '';
+          top: 5px;
+        }
+
+        span::after {
+          content: '';
+          top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: 1100px) {
+  .navigation.isActive {
+    filter: none;
+  }
+
+  .navigation {
+
+    .container-header.isActive {
+      position: fixed;
+      z-index: 18;
+      left: 26%;
+      right: 30%;
+      top: 18px;
+    }
+
+    .container-header {
+      width: 97%;
+      height: 40px;
+
+      .title {
+        z-index: 18;
+      }
+
+      &__rickandMorty.isActive {
+        position: relative;
+        @include flex(column, space-between);
+        width: 231px;
+      }
+
+      &__rickandMorty {
+        height: 100%;
+
+        .nav.isActive {
+          position: fixed;
+          overflow: hidden;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 16;
+          background: rgba(41, 41, 41, 0.6);
+
+          .links.isActive {
+            position: fixed;
+            right: 0;
+            transition: all ease 0.5s;
+            display: block;
+          }
+        }
+
+
+
+        .nav {
+          position: fixed;
+          overflow: hidden;
+          z-index: 16;
+
+          .links.isModal {
+            display: none;
+          }
+
+          .links {
+            overflow: hidden;
+            position: fixed;
+            height: 165px;
+            align-items: flex-start;
+            z-index: 17;
+            background-color: #FCFCFC;
+            right: -100%;
+            top: 0;
+            width: 100%;
+            display: block;
+
+            .navbar-nav-rickandMorty.isActive {
+              @include flex(column, space-between);
+              width: 95%;
+              height: 64px;
+              margin-top: 152px;
+              align-items: flex-start;
+              margin:0 auto ;
+              margin-top: 84px;
+              z-index: 16;
+              padding-left: 10px;
+            }
+
+            .navbar-nav-yocalab {
+              display: none;
+
+            }
+          }
+
+        }
+      }
+
+      &__burger {
+        z-index: 18;
+
+        .burger-btn {
+          display: block;
+
+        }
+      }
+    }
+  }
+}
+
+
