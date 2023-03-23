@@ -1,0 +1,15 @@
+<div class="modal-window" (click)="onCloseModalWindow()" [ngStyle]="{display: !isShowModal ? 'none' : 'block' }">
+  <div class="modal-window__wrapper-modal">
+    <div class="information-review" *ngIf="isShowModal;">
+      <div class="main">
+        <div class="main__photo-review" [ngStyle]="{'background-image':  getUrl()}">
+          <!-- <img [src]="isResults.image" alt=""> -->
+        </div>
+        <div class="main__info">
+          <!-- <div class="date">{{isReview.date}}</div>
+          <div class="review-des">{{isReview.description}}</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

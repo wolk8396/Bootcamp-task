@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { Information } from 'src/app/models/character.module';
 import { Results } from 'src/app/models/results.module';
 import { ApiService } from 'src/app/services/api.service';
+import { ResultService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-avatar',
@@ -15,7 +16,9 @@ export class AvatarComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() results!: Results;
 
-  constructor() {
+  constructor(
+  private resultService: ResultService
+  ) {
 
   }
 
@@ -23,16 +26,19 @@ export class AvatarComponent implements OnInit, OnChanges, OnDestroy {
     this.onResultAvatar(this.results);
   }
 
+  ngOnInit(): void {
+
+  }
+
   onResultAvatar(res: Results): void {
     const {image, location} = res;
     this.isUrl = image;
     this.characterName = this.results.name;
     console.log(this.results.name);
-
   }
 
-  ngOnInit(): void {
-
+  onOpenModal(): void {
+    this.resultService.onResult(this.results);
   }
 
   ngOnDestroy(): void {

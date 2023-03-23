@@ -28,6 +28,8 @@ export class HeaderComponentApp implements OnInit {
   }
 
   onPositionPage(position: ScrollLogicalPosition): void {
+    console.log('click', position);
+
     document.body.scrollIntoView({
       behavior: "smooth",
       block: position,
