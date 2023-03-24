@@ -33,7 +33,7 @@
       // border: 1px solid;
 
       .title {
-        @include title(bold, 28px, center);
+        @include title(500, 28px, center);
         color: $title_header;
       }
 
