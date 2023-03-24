@@ -34,7 +34,7 @@
       height: 20%;
 
       span {
-        @include title(bold, 42px, center);
+        @include title(500, 42px, center);
         color: $title_cart;
       }
     }

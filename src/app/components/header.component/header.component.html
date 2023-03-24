@@ -3,6 +3,10 @@
     <div class="container-header__rickandMorty"[ngClass]="{'isActive': isActive}">
       <div class="title">Rick and Morty</div>
       <div class="nav" [ngClass]="{'isActive': isActive}" #nav>
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+          <label class="form-check-label" for="flexSwitchCheckDefault">infinite data loading</label>
+        </div>
         <nav class="links" [ngClass]="{'isActive': isActive, 'isModal': isPosition}">
           <ul class="navbar-nav-rickandMorty" [ngClass]="{'isActive': isActive}">
             <li class="item-link">

@@ -1,6 +1,6 @@
 export interface InformationDate {
   count: number,
   pages: number,
-  next: string,
+  next: string | null,
   prev:string | null,
 }
