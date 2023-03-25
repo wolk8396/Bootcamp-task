@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren } from '@angular/core';
-import { Subject } from 'rxjs';
 import { Information } from 'src/app/models/character.module';
 import { Results } from 'src/app/models/results.module';
 import { ApiService } from 'src/app/services/api.service';
 import { fromEvent } from 'rxjs';
-import { throttleTime, tap } from 'rxjs/operators';
+import { throttleTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -19,6 +18,7 @@ export class MainComponent implements OnInit, OnDestroy {
   isLoad: number = 0;
   isNextPage!: string | null;
   prevPage!: string | null;
+  isChecked: boolean = false;
 
   @ViewChildren('cart') cart!: QueryList<any>;
 
@@ -35,6 +35,7 @@ export class MainComponent implements OnInit, OnDestroy {
       .subscribe({
         next: res => {
           this.isLoad = Math.round(this.getScrollWidth());
+          !this.isChecked ? this.onUploadCart(this.isLoad): null;
         },
     });
   }
@@ -88,7 +89,6 @@ export class MainComponent implements OnInit, OnDestroy {
 
     setTimeout(() => {
       this.renderer.removeStyle(parent, 'height');
-
     }, 0);
   }
 
@@ -108,15 +108,13 @@ export class MainComponent implements OnInit, OnDestroy {
     this.prevPage = info.prev;
   }
 
+  checkCheckBoxvalue(event: Event): void {
+   this.isChecked = !this.isChecked;
 
-  onNext(): void {
+   if(this.isChecked) {
     this.onClearPage();
-    this.onNextCartList(this.isNextPage);
-  }
-
-  onPrev(): void {
-    this.onClearPage();
-    this.onNextCartList(this.prevPage);
+    this.onGetDate(1)
+   }
   }
 
   ngOnDestroy(): void {

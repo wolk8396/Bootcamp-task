@@ -4,6 +4,7 @@
 .wrapper-main-page {
   @include flex(column, space-between);
   align-items: center;
+  margin-top: 131px;
 
   &__cart {
     display: grid;
@@ -11,17 +12,12 @@
     grid-template-rows: 1fr;
     row-gap: 39px;
     column-gap: 38px;
-    margin-top: 131px;
   }
 
   &__naveget {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 5px;
     height: 45px;
     margin-top: 68px;
     margin-bottom: 96px;
-    border: 1px solid;
 
     .btn {
       height: 100%;

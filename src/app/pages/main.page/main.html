@@ -1,11 +1,17 @@
 <div class="wrapper-main-page">
-  <div class="wrapper-main-page__cart" #cart>
-    <div class="item" *ngFor="let item of isResults">
-      <app-avatar [results]="item" *ngIf="isShowCart"></app-avatar>
+  <ng-container *transloco="let t">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" (change)="checkCheckBoxvalue($event)">
+      <label class="form-check-label" for="flexSwitchCheckDefault" *ngIf="!isChecked">{{t('uploadCart.infinite')}}</label>
+      <label class="form-check-label" for="flexSwitchCheckDefault" *ngIf="isChecked">{{t('uploadCart.pagination')}}</label>
     </div>
-  </div>
-  <nav class="wrapper-main-page__naveget">
-    <app-nav-pagination *ngIf="isShowCart" (page)="onGetPage($event)" [pagesBtn]="ArrayNumbersPage"></app-nav-pagination>
-  </nav>
+    <div class="wrapper-main-page__cart" #cart>
+      <div class="item" *ngFor="let item of isResults">
+        <app-avatar [results]="item" *ngIf="isShowCart"></app-avatar>
+      </div>
+    </div>
+    <nav class="wrapper-main-page__naveget">
+      <app-nav-pagination *ngIf="isChecked" (page)="onGetPage($event)" [pagesBtn]="ArrayNumbersPage"></app-nav-pagination>
+    </nav>
+  </ng-container>
 </div>
-

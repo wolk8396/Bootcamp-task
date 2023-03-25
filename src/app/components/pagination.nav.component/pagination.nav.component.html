@@ -1,16 +1,18 @@
 <nav aria-label="...">
-  <ul class="pagination" #nav>
-    <li class="page-item prev" (click)="onPrev()">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item" [ngClass]="{'active':item === isNumberPage}"
-      *ngFor="let item of this.pages"
-      (click)="onUploadPage(item)"
-      >
-      <span class="page-link">{{item}}</span>
-    </li>
-    <li class="page-item" (click)="onNext()">
-      <a class="page-link">Next</a>
-    </li>
-  </ul>
+  <ng-container *transloco="let t">
+    <ul class="pagination" #nav>
+      <li class="page-item prev" (click)="onPrev()">
+        <a class="page-link">{{t('nav_paginator.previous')}}</a>
+      </li>
+      <li class="page-item" [ngClass]="{'active':item === isNumberPage}"
+        *ngFor="let item of this.pages"
+        (click)="onUploadPage(item)"
+        >
+        <span class="page-link">{{item}}</span>
+      </li>
+      <li class="page-item prev" (click)="onNext()">
+        <a class="page-link">{{t('nav_paginator.next')}}</a>
+      </li>
+    </ul>
+  </ng-container>
 </nav>

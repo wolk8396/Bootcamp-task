@@ -4,9 +4,22 @@
     "status":"Status:",
     "species": "Species:",
     "origin":"Origin:",
-    "location": "Location:",
+    "location":"Location:",
     "gender":"Gender:"
+  },
+  "nav_header": {
+    "bottom": "bottom",
+    "top":"top",
+    "title": "Rick and Morty"
+  },
+  "nav_paginator": {
+    "previous": "Previous",
+    "next": "Next"
+  },
 
+  "uploadCart": {
+    "pagination": "Pagination",
+    "infinite": "infinite loading"
   }
 }
 
