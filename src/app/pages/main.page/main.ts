@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit, QueryList, Renderer2, ViewChildren } from
 import { Information } from 'src/app/models/character.module';
 import { Results } from 'src/app/models/results.module';
 import { ApiService } from 'src/app/services/api.service';
-import { fromEvent } from 'rxjs';
-import { throttleTime} from 'rxjs/operators';
+import { fromEvent, Subject } from 'rxjs';
+import { takeUntil, throttleTime} from 'rxjs/operators';
 import { StopInfiniteLoadingService } from 'src/app/services/infinite.loading.service';
 
 @Component({
@@ -23,6 +23,10 @@ export class MainComponent implements OnInit, OnDestroy {
   isStopLoading: boolean = true;
   isShowSpinner: boolean = false;
 
+  private scrollDes$ = new Subject<void>();
+  private getCharacterDes$ = new Subject<void>();
+  private characterNextDes$ =  new Subject<void>();
+
   @ViewChildren('cart') cart!: QueryList<any>;
 
   constructor(
@@ -39,7 +43,7 @@ export class MainComponent implements OnInit, OnDestroy {
     });
 
     fromEvent(document, 'scroll')
-      .pipe(throttleTime(20))
+      .pipe(throttleTime(20), takeUntil(this.scrollDes$))
       .subscribe({
         next: res => {
           this.isLoad = Math.round(this.getScrollWidth());
@@ -56,17 +60,18 @@ export class MainComponent implements OnInit, OnDestroy {
   onNextCartList(url: string | null): void {
     this.isShowSpinner = true;
     if (!!url) {
-      this.getCharacter.characterNext(url).subscribe({
-        next: character => {
-          this.onRenderCharacter(character);
-        },
-        error: (error) => {
-          this.isShowSpinner = false;
-        },
-        complete: () => {
-          this.isShowSpinner = false;
-        }
-      })
+      this.getCharacter.characterNext(url).pipe(takeUntil(this.getCharacterDes$))
+          .subscribe({
+            next: character => {
+              this.onRenderCharacter(character);
+            },
+            error: (error) => {
+              this.isShowSpinner = false;
+            },
+            complete: () => {
+              this.isShowSpinner = false;
+            }
+          })
     }
   }
 
@@ -80,19 +85,20 @@ export class MainComponent implements OnInit, OnDestroy {
   onGetDate(page: number): void {
     this.isShowSpinner = true;
 
-    this.getCharacter.character(page).subscribe({
-      next: character => {
-        this.isShowCart = true;
-        this.onCreatePagePaginator(character.info.pages)
-        this.onRenderCharacter(character);
-      },
-      error: (error) => {
-        this.isShowSpinner = false;
-      },
-      complete: () => {
-        this.isShowSpinner = false;
-      }
-    })
+    this.getCharacter.character(page).pipe(takeUntil(this.characterNextDes$))
+        .subscribe({
+          next: character => {
+            this.isShowCart = true;
+            this.onCreatePagePaginator(character.info.pages)
+            this.onRenderCharacter(character);
+          },
+          error: (error) => {
+            this.isShowSpinner = false;
+          },
+          complete: () => {
+            this.isShowSpinner = false;
+          }
+        })
   }
 
   onClearPage(): void {
@@ -139,6 +145,13 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.scrollDes$.next();
+    this.scrollDes$.complete();
 
+    this.getCharacterDes$.next();
+    this.getCharacterDes$.complete();
+
+    this.characterNextDes$.next();
+    this.characterNextDes$.complete();
   }
 }

@@ -34,7 +34,7 @@
       height: 20%;
 
       span {
-        @include title(500, 38px, center);
+        @include title(600, 38px, center);
         color: $title_cart;
       }
     }
@@ -57,7 +57,7 @@
       &__title-avatar {
 
         span {
-          font-size: 22px;
+          font-size: 16px;
         }
       }
     }
@@ -87,7 +87,7 @@
       &__title-avatar {
 
         span {
-          font-size: 12px;
+          font-size: 10px;
         }
       }
     }
@@ -102,7 +102,7 @@
       &__title-avatar {
 
         span {
-          font-size: 10px;
+          font-size: 8px;
         }
       }
     }
@@ -120,4 +120,3 @@
     height: 142px;
   }
 }
-

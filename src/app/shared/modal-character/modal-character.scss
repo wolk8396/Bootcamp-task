@@ -15,10 +15,8 @@
   z-index: 100;
 
   &__wrapper-modal {
+    @include flex(column, space-between);
     position: absolute;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
     width: 905px;
     height: 461px;
     left: 50%;
@@ -45,7 +43,6 @@
           height: 100%;
           border-top-left-radius: 10px;
           border-bottom-left-radius: 10px;
-
         }
 
         &__info {
@@ -69,12 +66,10 @@
               span {
                 @include title(300, 20px, unset);
               }
-
             }
           }
         }
       }
-
     }
 
     .btn_close {
@@ -116,14 +111,7 @@
         height: 267px;
 
       .information-review {
-
-
         .main {
-
-
-          &__photo-review {
-
-          }
 
           &__info {
             ul {
@@ -151,7 +139,6 @@
         height: 230px;
 
       .information-review {
-
 
         .main {
           flex-direction: column;
@@ -184,4 +171,3 @@
     }
   }
 }
-
