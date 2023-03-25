@@ -1,6 +1,5 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { TranslocoRootModule } from "../transloco-root.module";
 import { AvatarComponent } from "./cart.character.component/cart.character.component";
 import { HeaderComponentApp } from "./header.component/header.component";
 import { PaginationNavComponent } from "./pagination.nav.component/pagination.nav.component";
