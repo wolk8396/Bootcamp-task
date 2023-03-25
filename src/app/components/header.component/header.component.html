@@ -1,16 +1,15 @@
 <nav class="navigation"[ngClass]="{'isActive': isActive, 'fixed': isPosition}">
-  <ng-container *transloco="let t">
     <div class="container-header">
       <div class="container-header__rickandMorty"[ngClass]="{'isActive': isActive}" (click)='onBurgerMenu()'>
-        <div class="title">{{t("nav_header.title")}}</div>
+        <div class="title">Rick and Morty</div>
         <div class="nav" [ngClass]="{'isActive': isActive}" #nav>
           <nav class="links" [ngClass]="{'isActive': isActive, 'isModal': isPosition}">
             <ul class="navbar-nav-rickandMorty" [ngClass]="{'isActive': isActive}">
               <li class="item-link">
-                  <a class="link" (click)="onPositionPage('start')">{{t("nav_header.top")}}</a>
+                  <a class="link" (click)="onPositionPage('start')">top</a>
               </li>
               <li class="item-link">
-                <a class="link" (click)="onPositionPage('end')">{{t("nav_header.bottom")}}</a>
+                <a class="link" (click)="onPositionPage('end')">bottom</a>
             </li>
             </ul>
           </nav>
@@ -22,5 +21,4 @@
         </div>
       </div>
     </div>
-  </ng-container>
 </nav>

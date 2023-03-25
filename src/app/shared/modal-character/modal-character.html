@@ -1,27 +1,26 @@
 <div class="modal-window" (click)="onCloseModalWindow()" [ngStyle]="{display: !isShowModal ? 'none' : 'block' }">
-  <ng-container *transloco="let t">
     <div class="modal-window__wrapper-modal">
       <div class="information-review" *ngIf="isShowModal;">
         <div class="main">
           <div class="main__photo-review" [ngStyle]="{'background-image': getUrl()}"></div>
           <div class="main__info">
             <ul>
-              <li>{{t('modal.name')}}
+              <li>Name:
                 <span>{{isResults.name}}</span>
               </li>
-              <li>{{t('modal.status')}}
+              <li>Status:
                 <span>{{isResults.status}}</span>
               </li>
-              <li>{{t('modal.species')}}
+              <li>Species:
                 <span>{{isResults.species}}</span>
               </li>
-              <li>{{t('modal.origin')}}
+              <li>Origin:
                 <span>{{isResults.origin.name}}</span>
               </li>
-              <li>{{t('modal.location')}}
+              <li>location:
                 <span>{{isResults.location.name}}</span>
               </li>
-              <li>{{t('modal.gender')}}
+              <li>Gender
                 <span>{{isResults.gender}}</span>
               </li>
             </ul>
@@ -29,5 +28,4 @@
         </div>
       </div>
     </div>
-  </ng-container>
 </div>

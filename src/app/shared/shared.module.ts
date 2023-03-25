@@ -11,8 +11,6 @@ import { SpinnerLoadingComponentApp } from "./spinner/spinner-component";
   ],
   imports:[
     CommonModule,
-    TranslocoRootModule
-
   ],
   exports: [
     ModalCharacterComponent,

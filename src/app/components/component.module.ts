@@ -12,13 +12,12 @@ import { PaginationNavComponent } from "./pagination.nav.component/pagination.na
     PaginationNavComponent
   ],
   imports:[
-    CommonModule,
-    TranslocoRootModule
+    CommonModule
   ],
   exports: [
     AvatarComponent,
     HeaderComponentApp,
-    PaginationNavComponent,
+    PaginationNavComponent
 
   ],
 })
