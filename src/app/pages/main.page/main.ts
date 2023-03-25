@@ -93,11 +93,8 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onGetPage(number: number): void {
-    const parent = (this.cart.first.nativeElement as HTMLElement);
     this.onClearPage();
     this.onGetDate(number);
-
-
   }
 
   onCreatePagePaginator(lastPage: number): void {
