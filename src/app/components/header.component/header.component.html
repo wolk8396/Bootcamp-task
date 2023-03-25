@@ -1,7 +1,7 @@
 <nav class="navigation"[ngClass]="{'isActive': isActive, 'fixed': isPosition}">
   <ng-container *transloco="let t">
     <div class="container-header">
-      <div class="container-header__rickandMorty"[ngClass]="{'isActive': isActive}">
+      <div class="container-header__rickandMorty"[ngClass]="{'isActive': isActive}" (click)='onBurgerMenu()'>
         <div class="title">{{t("nav_header.title")}}</div>
         <div class="nav" [ngClass]="{'isActive': isActive}" #nav>
           <nav class="links" [ngClass]="{'isActive': isActive, 'isModal': isPosition}">

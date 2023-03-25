@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, QueryList, SimpleChanges, ViewChild } from "@angular/core";
-import { TitleStrategy } from "@angular/router";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from "@angular/core";
 import { fromEvent, Observable, Subscription } from "rxjs";
 
 @Component({
@@ -49,8 +48,6 @@ export class PaginationNavComponent implements OnInit, OnChanges, AfterViewInit,
         this.isStartOfList = 6;
         this.listStartNext = 4;
         this.isEnd = 3;
-        console.log('1280');
-
         this.onRemoveActive();
         this.onSetActivePage(6);
         break;
@@ -59,7 +56,6 @@ export class PaginationNavComponent implements OnInit, OnChanges, AfterViewInit,
         this.isStartOfList = 2;
         this.listStartNext = 2;
         this.isEnd = 1;
-        console.log('520');
         this.onRemoveActive();
         this.onSetActivePage(3);
         break;

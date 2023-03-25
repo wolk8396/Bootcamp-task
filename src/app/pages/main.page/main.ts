@@ -4,6 +4,7 @@ import { Results } from 'src/app/models/results.module';
 import { ApiService } from 'src/app/services/api.service';
 import { fromEvent } from 'rxjs';
 import { throttleTime} from 'rxjs/operators';
+import { StopInfiniteLoadingService } from 'src/app/services/infinite.loading.service';
 
 @Component({
   selector: 'app-main',
@@ -19,23 +20,31 @@ export class MainComponent implements OnInit, OnDestroy {
   isNextPage!: string | null;
   prevPage!: string | null;
   isChecked: boolean = false;
+  isStopLoading: boolean = true;
+  isShowSpinner: boolean = false;
 
   @ViewChildren('cart') cart!: QueryList<any>;
 
   constructor(
     private getCharacter: ApiService,
+    public stopLoading: StopInfiniteLoadingService,
     public renderer: Renderer2,
     ) { }
 
   ngOnInit(): void {
     this.onGetDate(this.page);
 
+    this.stopLoading.stopLoading$.subscribe(res => {
+      this.isStopLoading = res
+    });
+
     fromEvent(document, 'scroll')
       .pipe(throttleTime(20))
       .subscribe({
         next: res => {
           this.isLoad = Math.round(this.getScrollWidth());
-          !this.isChecked ? this.onUploadCart(this.isLoad): null;
+          !this.isChecked && this.isStopLoading ?
+            this.onUploadCart(this.isLoad): null;
         },
     });
   }
@@ -45,11 +54,17 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onNextCartList(url: string | null): void {
+    this.isShowSpinner = true;
     if (!!url) {
       this.getCharacter.characterNext(url).subscribe({
         next: character => {
-          console.log(character);
           this.onRenderCharacter(character);
+        },
+        error: (error) => {
+          this.isShowSpinner = false;
+        },
+        complete: () => {
+          this.isShowSpinner = false;
         }
       })
     }
@@ -63,6 +78,7 @@ export class MainComponent implements OnInit, OnDestroy {
   };
 
   onGetDate(page: number): void {
+    this.isShowSpinner = true;
 
     this.getCharacter.character(page).subscribe({
       next: character => {
@@ -70,6 +86,12 @@ export class MainComponent implements OnInit, OnDestroy {
         this.onCreatePagePaginator(character.info.pages)
         this.onRenderCharacter(character);
       },
+      error: (error) => {
+        this.isShowSpinner = false;
+      },
+      complete: () => {
+        this.isShowSpinner = false;
+      }
     })
   }
 
@@ -79,7 +101,6 @@ export class MainComponent implements OnInit, OnDestroy {
     const arrayCart = Array.from(nodeList);
     let heightEl = parent.clientHeight + 'px';
     this.isResults = [];
-    console.log(heightEl);
 
     this.renderer.setStyle(parent, 'height', heightEl);
 

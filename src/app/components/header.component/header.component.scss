@@ -30,6 +30,7 @@
       align-items: center;
       margin: 0;
       width: 100%;
+      z-index: 0;
       // border: 1px solid;
 
       .title {
@@ -45,7 +46,7 @@
           width: 100%;
 
           .navbar-nav-rickandMorty.isActive {
-            width: 380px;
+            // width: 380px;
             height: 21px;
             margin-right: 0;
             padding-left: 0;

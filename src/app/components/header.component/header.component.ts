@@ -15,9 +15,7 @@ export class HeaderComponentApp implements OnInit {
     public renderer: Renderer2,
   ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onBurgerMenu(): void {
     this.isActive = !this.isActive;
@@ -28,7 +26,6 @@ export class HeaderComponentApp implements OnInit {
   }
 
   onPositionPage(position: ScrollLogicalPosition): void {
-    console.log('click', position);
 
     document.body.scrollIntoView({
       behavior: "smooth",

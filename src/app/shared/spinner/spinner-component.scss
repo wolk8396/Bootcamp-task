@@ -1,0 +1,43 @@
+@import '../../../styles/mixins-fonts-style.scss';
+@import '../../../styles/color.scss';
+
+.spinner {
+  background-color: rgba(0, 0, 0, var(--bg-opacity));
+  --bg-opacity: 0.75;
+  position: fixed;
+  display: block;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  z-index: 100;
+
+
+  .spinner-block {
+    position: absolute;
+    width: 166px;
+    height: 166px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .spinner-border {
+      color: $green !important;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media(max-width: 370px) {
+  .spinner {
+
+    .spinner-border {
+      width: 120px;
+      height: 120px;
+    }
+  }
+}

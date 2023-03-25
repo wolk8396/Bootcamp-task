@@ -18,7 +18,7 @@
   },
 
   "uploadCart": {
-    "pagination": "Pagination",
+    "pagination": "Pagination loading",
     "infinite": "infinite loading"
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, Renderer2 } from "@angular/core";
 import { Subject, takeUntil } from "rxjs";
 import { Results } from "src/app/models/results.module";
+import { StopInfiniteLoadingService } from "src/app/services/infinite.loading.service";
 import { ResultService } from "src/app/services/modal.service";
 
 @Component({
@@ -18,6 +19,7 @@ export class ModalCharacterComponent implements OnInit, OnDestroy {
   constructor(
     private resultService: ResultService,
     public renderer: Renderer2,
+    public stopLoading: StopInfiniteLoadingService
   ) {}
 
   ngOnInit(): void {
@@ -27,11 +29,13 @@ export class ModalCharacterComponent implements OnInit, OnDestroy {
 
   onCloseModalWindow(): void {
     this.isShowModal = false;
+    this.stopLoading.onStopLoading(true);
   }
 
   onResult(result: Results): void {
     this.isResults = result;
     this.isShowModal = true;
+    this.stopLoading.onStopLoading(false);
   }
 
   getUrl(): string{
@@ -41,6 +45,6 @@ export class ModalCharacterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.modalWindowCharacterDes$.next();
     this.modalWindowCharacterDes$.complete();
+    this.stopLoading.onStopLoading(true);
   }
-
 }
