@@ -72,7 +72,7 @@ export class MainComponent implements OnInit, OnDestroy {
               this.isShowSpinner = false;
             }
           })
-    } else  this.isShowSpinner = false;
+    } else this.isShowSpinner = false;
   }
 
   getScrollWidth (): number {
