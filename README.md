@@ -1,3 +1,7 @@
+## Bootcamp-task github pages
+
+https://wolk8396.github.io/Bootcamp-task/
+
 # Task
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
